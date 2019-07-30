@@ -19,7 +19,7 @@ public class LuhnController {
     }
 
     @PostMapping("/result")
-    public String getControlDigitAndCorrectnessOfNumber(Model model, @RequestParam String digitSequence) {
+    public String verifyDigitSequence(Model model, @RequestParam String digitSequence) {
         int checkDigit = luhnService.getCheckDigit(digitSequence);
         model.addAttribute("checkDigit", checkDigit);
         model.addAttribute("fullCode", digitSequence + checkDigit);
