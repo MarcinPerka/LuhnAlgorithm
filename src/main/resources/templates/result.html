@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+    <h4>Control digit: </h4>
+    <p th:text="${controlDigit}"></p>
+    <h4>Control number: </h4>
+    <p th:text="${controlNumber}"></p>
+    <h4>Is number valid? </h4>
+    <p th:text="${isValid}"></p>
+    <a th:href="@{/}">Go back to home page</a>
+</body>
+</html>

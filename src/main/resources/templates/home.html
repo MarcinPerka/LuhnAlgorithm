@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<form class="form-add" th:method="POST" th:action="@{/result}">
+    <div class="form-group">
+        <label for="entryDigit">Entry Digit</label>
+        <input type="number" min="0" class="form-control" id="entryDigit" th:value="${entry}" name="entry" required>
+    </div>
+    <button type="submit">Save</button>
+</form>
+</body>
+</html>
