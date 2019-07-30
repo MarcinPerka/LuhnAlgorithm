@@ -41,4 +41,17 @@ public class LuhnServiceTests {
 
         assertThat(luhnService.getCheckDigit("000000001")).isEqualTo(8);
     }
+
+    @Test
+    public void testVerifyFullCode(){
+        assertThat(luhnService.verifyFullCode("924803")).isEqualTo(true);
+
+        assertThat(luhnService.verifyFullCode("2927232000000000218")).isEqualTo(true);
+
+        assertThat(luhnService.verifyFullCode("8557")).isEqualTo(true);
+
+        assertThat(luhnService.verifyFullCode("000000000")).isEqualTo(true);
+
+        assertThat(luhnService.verifyFullCode("0000000018")).isEqualTo(true);
+    }
 }
