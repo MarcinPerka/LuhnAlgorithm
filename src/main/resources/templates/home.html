@@ -5,10 +5,10 @@
     <title>Title</title>
 </head>
 <body>
-<form class="form-add" th:method="POST" th:action="@{/result}">
+<form class="form-add" th:method="POST" th:action="@{/result}" th:object="${luhn}">
     <div class="form-group">
         <label for="entryDigit">Entry Digit</label>
-        <input type="number" min="0" class="form-control" id="entryDigit" th:value="${entry}" name="entry" required>
+        <input type="number" min="0" class="form-control" id="entryDigit" th:field="${luhn.digitSequence}" name="digitSequence" required>
     </div>
     <button type="submit">Save</button>
 </form>

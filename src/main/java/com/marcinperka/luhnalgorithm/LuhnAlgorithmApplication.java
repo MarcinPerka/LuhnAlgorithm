@@ -12,8 +12,8 @@ public class LuhnAlgorithmApplication implements WebMvcConfigurer {
         SpringApplication.run(LuhnAlgorithmApplication.class, args);
     }
 
-    @Override
+  /*  @Override
     public void addViewControllers(ViewControllerRegistry registry) {
         registry.addViewController("/").setViewName("home");
-    }
+    }*/
 }

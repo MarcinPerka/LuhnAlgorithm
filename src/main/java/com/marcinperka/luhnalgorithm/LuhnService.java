@@ -1,10 +1,14 @@
 package com.marcinperka.luhnalgorithm;
 
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 @Service
 public class LuhnService {
+
+
+    private Luhn luhn;
 
     /**
      * @param digitSequence  - number for which we want get checksum
@@ -16,7 +20,7 @@ public class LuhnService {
         int iteratedNumber;
 
         for (int i = digitSequence.length() - 1; i >= 0; i--) {
-            iteratedNumber = Integer.valueOf(digitSequence.substring(i, i + 1));
+            iteratedNumber = Integer.parseInt(digitSequence.substring(i, i + 1));
             if (orderOfWeights) {
                 iteratedNumber *= 2; // if odd multiply by 2
                 if (iteratedNumber > 9) {
@@ -41,11 +45,20 @@ public class LuhnService {
     }
 
     /**
-     *
      * @param fullCode - digit sequence with check digit on last position
      * @return true if code is valid, false if it is not.
      */
     public boolean verifyFullCode(String fullCode) {
         return processLuhnAlgorithm(fullCode, false) == 0;
+    }
+
+    public void setLuhn(Luhn luhn) {
+        this.luhn = luhn;
+        this.luhn.setFullCode(luhn.getDigitSequence() + getCheckDigit(luhn.getDigitSequence()));
+        this.luhn.setValid(verifyFullCode(this.luhn.getFullCode()));
+    }
+
+    public Luhn getLuhn() {
+        return luhn;
     }
 }
