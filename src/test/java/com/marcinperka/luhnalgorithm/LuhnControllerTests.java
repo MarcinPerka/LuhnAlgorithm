@@ -52,6 +52,6 @@ public class LuhnControllerTests {
                 .andExpect(view().name("result"))
                 .andExpect(model().attribute("digitSequence", "92480"))
                 .andExpect(model().attribute("checkDigit", 3))
-                .andExpect(model().attribute("isValid", true));
+                .andExpect(model().attribute("isValid", false));
     }
 }

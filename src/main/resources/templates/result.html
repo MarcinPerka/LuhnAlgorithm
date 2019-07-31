@@ -15,13 +15,19 @@
     </div>
     <div class="active-cyan-3 active-cyan-4">
         <label for="checkDigit">Check digit for provided number:</label>
-        <input type="text" class="form-control" id="checkDigit" th:value="${checkDigit}" aria-describedby="checkDigitHelp" disabled>
-        <small id="checkDigitHelp" class="form-text text-muted">Appended check digit at the end of source sequence will form valid number according Luhn algorithm.</small>
+        <input type="text" class="form-control" id="checkDigit" th:value="${checkDigit}"
+               aria-describedby="checkDigitHelp" disabled>
+        <small id="checkDigitHelp" class="form-text text-muted">Appended check digit at the end of source sequence will
+            form valid number according Luhn algorithm.
+        </small>
     </div>
     <div class="active-cyan-3 active-cyan-4">
         <label for="isValid">Is the sequence considered as correct?</label>
-        <input type="text" class="form-control" id="isValid" th:value="${isValid}" aria-describedby="isValidHelp" disabled>
-        <small id="isValidHelp" class="form-text text-muted">The sequence is considered valid if the checksum mod 10 equals to zero.</small>
+        <input type="text" class="form-control" id="isValid" th:value="${isValid}" aria-describedby="isValidHelp"
+               disabled>
+        <small id="isValidHelp" class="form-text text-muted">The sequence is considered valid if the checksum mod 10
+            equals to zero.
+        </small>
     </div>
     <div class="submitButton">
         <a th:href="@{/}">
