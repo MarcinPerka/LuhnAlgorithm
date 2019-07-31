@@ -43,15 +43,17 @@ public class LuhnServiceTests {
     }
 
     @Test
-    public void testVerifyFullCode(){
-        assertThat(luhnService.verifyFullCode("924803")).isEqualTo(true);
+    public void testValidateTheNumber(){
+        assertThat(luhnService.validateTheNumber("924803")).isEqualTo(true);
 
-        assertThat(luhnService.verifyFullCode("2927232000000000218")).isEqualTo(true);
+        assertThat(luhnService.validateTheNumber("2927232000000000218")).isEqualTo(true);
 
-        assertThat(luhnService.verifyFullCode("8557")).isEqualTo(true);
+        assertThat(luhnService.validateTheNumber("8557")).isEqualTo(true);
 
-        assertThat(luhnService.verifyFullCode("000000000")).isEqualTo(true);
+        assertThat(luhnService.validateTheNumber("000000000")).isEqualTo(true);
 
-        assertThat(luhnService.verifyFullCode("0000000018")).isEqualTo(true);
+        assertThat(luhnService.validateTheNumber("0000000018")).isEqualTo(true);
+
+        assertThat(luhnService.validateTheNumber("11")).isEqualTo(false);
     }
 }

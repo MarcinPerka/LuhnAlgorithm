@@ -1,19 +1,17 @@
 package com.marcinperka.luhnalgorithm;
 
 
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 @Service
 public class LuhnService {
 
-
-    private Luhn luhn;
-
     /**
-     * @param digitSequence  - number for which we want get checksum
-     * @param orderOfWeights - order of weights, if true - the first item is odd, second even. If false - the first item is even, second odd.
-     * @return possible proper control number/checksum
+     * The method is used to determine the weighted sum of numbers modulo 10 according to Luhn Algorithm.
+     * The return of method is used in other methods: {@link #getCheckDigit(String) getCheckDigit} or {@link #validateTheNumber(String) validateTheNumber}.
+     * @param digitSequence  - String of digits.
+     * @param orderOfWeights - Parameter responsible for assigning weights. If true the first position is odd (wage 2). If false the first position is even (wage 1).
+     * @return Sum of weighted numbers according to the Luhn Algorithm modulo 10.
      */
     public int processLuhnAlgorithm(String digitSequence, boolean orderOfWeights) {
         int sum = 0;
@@ -24,7 +22,7 @@ public class LuhnService {
             if (orderOfWeights) {
                 iteratedNumber *= 2; // if odd multiply by 2
                 if (iteratedNumber > 9) {
-                    iteratedNumber = (iteratedNumber % 10) + 1; // If number has two digits we are going to get second digit and add 1 because for every single number multiplied by 2 we will get number less than 20.
+                    iteratedNumber = (iteratedNumber % 10) + 1; // If number has two digits we are going to get second digit and add 1 because for every single number multiplied by 2 we will get the number less than 20.
                 }
             }
             sum += iteratedNumber;
@@ -32,12 +30,11 @@ public class LuhnService {
         }
 
         return sum % 10;
-
     }
 
     /**
-     * @param digitSequence
-     * @return checksum
+     * @param digitSequence - String of digits.
+     * @return - Check digit.
      */
     public int getCheckDigit(String digitSequence) {
         int result = processLuhnAlgorithm(digitSequence, true);
@@ -45,20 +42,9 @@ public class LuhnService {
     }
 
     /**
-     * @param fullCode - digit sequence with check digit on last position
-     * @return true if code is valid, false if it is not.
+     * @return The sequence is considered valid if the checksum mod 10 equals to zero.
      */
-    public boolean verifyFullCode(String fullCode) {
-        return processLuhnAlgorithm(fullCode, false) == 0;
-    }
-
-    public void setLuhn(Luhn luhn) {
-        this.luhn = luhn;
-        this.luhn.setFullCode(luhn.getDigitSequence() + getCheckDigit(luhn.getDigitSequence()));
-        this.luhn.setValid(verifyFullCode(this.luhn.getFullCode()));
-    }
-
-    public Luhn getLuhn() {
-        return luhn;
+    public boolean validateTheNumber(String digitSequence) {
+        return processLuhnAlgorithm(digitSequence, false) == 0;
     }
 }

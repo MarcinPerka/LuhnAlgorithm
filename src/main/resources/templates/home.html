@@ -2,15 +2,35 @@
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
+    <title>Luhn Algorithm</title>
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/css/bootstrap.min.css" rel="stylesheet">
+    <link href="../static/css/styles.css" th:href="@{/css/styles.css}" rel="stylesheet"/>
 </head>
 <body>
-<form class="form-add" th:method="POST" th:action="@{/result}" th:object="${luhn}">
-    <div class="form-group">
-        <label for="entryDigit">Entry Digit</label>
-        <input type="number" min="0" class="form-control" id="entryDigit" th:field="${luhn.digitSequence}" name="digitSequence" required>
-    </div>
-    <button type="submit">Save</button>
-</form>
+<div th:replace="navbar:: navbar"></div>
+<div class="container">
+    <p>Calculates check digit(the digit to be appended to the digit sequence to make whole sequence checksum equal to
+        zero),
+        calculates checksum for provided digitsequence and verify if it is a valid number.</p>
+    <form th:method="POST" th:action="@{/result}">
+        <div class="active-cyan-3 active-cyan-4">
+            <label for="entryDigit">Provide digit sequence:</label>
+            <input type="number" min="0" class="form-control" id="entryDigit" th:value="${digitSequence}"
+                   name="digitSequence" placeholder="Digit sequence" required>
+        </div>
+        <div class="submitButton">
+            <button type="submit" class="btn btn-info">Submit</button>
+        </div>
+    </form>
+    <small>The Luhn algorithm was developed by German computer scientist Hans Peter Luhn in 1954.
+        It calculates simple checksum formula used to validate identification numbers such as credit card numbers.
+        The algorithm was designed to protect against accidental errors, such as a digit mistyping.
+        It will detect any single-digit error, as well as almost all transpositions of adjacent digits.
+        It will not, however, detect transposition of the two-digit sequence 09 to 90 (or vice versa).
+        The sequence is considered valid if the checksum mod 10 equals to zero.<br>
+    </small>
+</div>
 </body>
 </html>
+
+
