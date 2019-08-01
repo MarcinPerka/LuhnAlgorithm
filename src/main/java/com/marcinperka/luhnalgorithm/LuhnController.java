@@ -18,7 +18,9 @@ public class LuhnController {
     }
 
     /**
-     * @param digitSequence - sequence of digits without space and decimal places. The pattern of number is checked by input data type on view page.
+     * @param digitSequence - Sequence of digits without space and decimal places. The pattern of number is checked by input data type on view page.
+     *                      The parameter is of the string type because it is not known how large the number will be provided. BigInteger/Long  would be cast
+     *                      in the service layer to the string anyway to get to the given digit.
      */
     @RequestMapping(value = "/result", method = {RequestMethod.GET, RequestMethod.POST})
     public String processLuhnAlgorithm(Model model, @RequestParam String digitSequence) {
