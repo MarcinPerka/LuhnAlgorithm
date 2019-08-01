@@ -34,8 +34,8 @@ public class LuhnService {
     }
 
     /**
-     * Method invoke {@link #processLuhnAlgorithm(String, boolean) processLuhnAlgorithm} method.
-     * When calculating the check digit, it is assumed that the last item is even so we set parameter "lastPositionIsOdd" to true.
+     * Method invokes {@link #processLuhnAlgorithm(String, boolean) processLuhnAlgorithm} method.
+     * When calculating the check digit, it is assumed that the last item is even so we set parameter "lastPositionIsEven" to true.
      *
      * @param digitSequence - String of digits.
      * @return - Check digit.
@@ -45,8 +45,8 @@ public class LuhnService {
     }
 
     /**
-     * Method invoke {@link #processLuhnAlgorithm(String, boolean) processLuhnAlgorithm} method.
-     * When validate the check digit, it is assumed that the last item is odd so we set parameter "lastPositionIsOdd" to true.
+     * Method invokes {@link #processLuhnAlgorithm(String, boolean) processLuhnAlgorithm} method.
+     * When validate the check digit, it is assumed that the last item is odd so we set parameter "lastPositionIsEven" to false.
      *
      * @return The sequence is considered valid if the checksum mod 10 equals to zero.
      */

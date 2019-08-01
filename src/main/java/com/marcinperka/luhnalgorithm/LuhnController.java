@@ -18,7 +18,7 @@ public class LuhnController {
     }
 
     /**
-     * @param digitSequence - sequence of digits without space and decimal places. Number is validated by input type on view page.
+     * @param digitSequence - sequence of digits without space and decimal places. The pattern of number is checked by input data type on view page.
      */
     @RequestMapping(value = "/result", method = {RequestMethod.GET, RequestMethod.POST})
     public String processLuhnAlgorithm(Model model, @RequestParam String digitSequence) {

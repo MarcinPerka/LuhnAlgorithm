@@ -22,8 +22,11 @@
         </small>
     </div>
     <div class="active-cyan-3 active-cyan-4">
-        <label for="isValid">Is the sequence considered as correct?</label>
-        <input type="text" class="form-control" id="isValid" th:value="${isValid}" aria-describedby="isValidHelp"
+        <label for="isValid">
+            Is the given sequence of digits considered as correct?</label>
+        <input type="text" class="form-control" id="isValid"
+               th:value="${isValid} ? 'Yes, it is correct.' : 'No, it is not correct.'"
+               aria-describedby="isValidHelp"
                disabled>
         <small id="isValidHelp" class="form-text text-muted">The sequence is considered valid if the checksum mod 10
             equals to zero.
