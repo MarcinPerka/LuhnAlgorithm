@@ -14,8 +14,8 @@
         calculates checksum for provided digitsequence and verify if it is a valid number.</p>
     <form th:method="POST" th:action="@{/result}">
         <div class="active-cyan-3 active-cyan-4">
-            <label for="entryDigit">Provide digit sequence:</label>
-            <input type="number" min="0" class="form-control" id="entryDigit" th:value="${digitSequence}"
+            <label for="digitSequence">Provide digit sequence:</label>
+            <input type="number" min="0" class="form-control" id="digitSequence" th:value="${digitSequence}"
                    name="digitSequence" placeholder="Digit sequence" required>
         </div>
         <div class="submitButton">
